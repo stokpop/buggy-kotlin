@@ -1,3 +1,5 @@
+import org.apache.http.impl.client.HttpClients
+
 class BuggyKotlin {
 
     fun m(): String {
@@ -10,5 +12,10 @@ class BuggyKotlin {
         return j
     }
 
+    private fun createHttpClientBuilder() =
+        HttpClients.custom()
+            .setMaxConnTotal(10)
+            .setMaxConnPerRoute(10)
+            // .disableConnectionState() // should be present, trigger PMD rule?
 
 }
