@@ -1,6 +1,8 @@
 import org.apache.http.impl.client.HttpClients
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand
 
 class BuggyKotlin {
+    var hc: HystrixCommand? = null
 
     fun m(): String {
         return "Hello Buggy Kotlin! ${ad(4)}"
